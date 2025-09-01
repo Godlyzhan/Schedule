@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Day Vegan Meal Plan & Fitness Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .skincare-header {
+            background: linear-gradient(135deg, #ffeaa7, #fd79a8);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            color: #2d3436;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skincare-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .routine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .routine-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .routine-header {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .morning .routine-header {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+        }
+
+        .evening .routine-header {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+        }
+
+        .routine-header h3 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .skincare-steps {
+            space-y: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: #2d3436;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .step-content p {
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        .step-content em {
+            color: #636e72;
+            font-size: 0.9em;
+        }
+
+        .hair-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .hair-section h2 {
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: center;
+            border-bottom: 3px solid #fd79a8;
+            padding-bottom: 10px;
+        }
+
+        .hair-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .hair-routine {
+            background: linear-gradient(135deg, #ff9ff3, #f368e0);
+            border-radius: 12px;
+            padding: 20px;
+            color: white;
+        }
+
+        .hair-routine h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            text-align: center;
+        }
+
+        .hair-steps {
+            space-y: 15px;
+        }
+
+        .hair-step {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hair-step strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffeaa7;
+            font-size: 1.05em;
+        }
+
+        .hair-step p {
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .hair-step em {
+            color: #ddd;
+            font-size: 0.9em;
+        }
+
+        .special-tips {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .special-tips h2 {
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: center;
+            border-bottom: 3px solid #74b9ff;
+            padding-bottom: 10px;
+        }
+
+        .tips-grid-skincare {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            border-radius: 12px;
+            padding: 20px;
+            color: #2d3436;
+        }
+
+        .tip-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #e17055;
+        }
+
+        .tip-card p {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .product-shopping {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-shopping h2 {
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: center;
+            border-bottom: 3px solid #00b894;
+            padding-bottom: 10px;
+        }
+
+        .shopping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .shopping-category {
+            background: linear-gradient(135deg, #a8e6cf, #88d8a3);
+            border-radius: 10px;
+            padding: 20px;
+            color: #2d3436;
+        }
+
+        .shopping-category h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            color: #00b894;
+        }
+
+        .shopping-category ul {
+            list-style: none;
+        }
+
+        .shopping-category li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .shopping-category li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00b894;
+            font-weight: bold;
+        }
+
+        .supplement-optimization {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .supplement-optimization h2 {
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: center;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+
+        .supplement-priority {
+            margin-bottom: 30px;
+        }
+
+        .priority-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid;
+        }
+
+        .priority-1 {
+            border-left-color: #f1c40f;
+            background: linear-gradient(135deg, #fff9e6, #fef7cd);
+        }
+
+        .priority-2 {
+            border-left-color: #3498db;
+            background: linear-gradient(135deg, #e8f4fd, #dbeafe);
+        }
+
+        .priority-3 {
+            border-left-color: #95a5a6;
+            background: linear-gradient(135deg, #f8f9fa, #ecf0f1);
+        }
+
+        .priority-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .priority-card > p {
+            font-weight: 600;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .supplement-details h4 {
+            color: #2c3e50;
+            margin: 15px 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        .supplement-details ul {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .supplement-details li {
+            padding: 3px 0 3px 20px;
+            position: relative;
+        }
+
+        .supplement-details li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .brand-options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .brand {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #3498db;
+        }
+
+        .brand.featured {
+            background: linear-gradient(135deg, #fff9e6, #f1c40f);
+            border: 2px solid #f39c12;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .brand.featured strong {
+            color: #d68910;
+        }
+
+        .brand strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .brand em {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .cost-breakdown {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .cost-breakdown h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .cost-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .cost-option {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+
+        .budget {
+            border-left-color: #27ae60;
+        }
+
+        .premium {
+            border-left-color: #8e44ad;
+        }
+
+        .cost-option h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .supplement-tips {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .supplement-tips h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .tips-grid-supplement {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .tip-supplement {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-top: 3px solid #e74c3c;
+        }
+
+        .tip-supplement h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .tip-supplement p {
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breakfast-base {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            color: #2d3436;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .breakfast-base h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .breakfast-base h2:before {
+            content: "🥣";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .day-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .day-header {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .day-header h3 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .exercise-section {
+            background: #e8f4fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .exercise-section h4 {
+            color: #0984e3;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .exercise-section h4:before {
+            content: "💪";
+            margin-right: 8px;
+        }
+
+        .meals-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #00b894;
+        }
+
+        .meal-item {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #00b894;
+        }
+
+        .meal-item strong {
+            color: #00b894;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .prep-section, .grocery-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .prep-section h2, .grocery-section h2 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+            border-bottom: 3px solid #74b9ff;
+            padding-bottom: 10px;
+        }
+
+        .prep-day {
+            background: #f1f3f4;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #fd79a8;
+        }
+
+        .prep-day h3 {
+            color: #e84393;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .prep-day h3:before {
+            content: "👩‍🍳";
+            margin-right: 10px;
+        }
+
+        .recipe {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .recipe h4 {
+            color: #6c5ce7;
+            margin-bottom: 10px;
+        }
+
+        .grocery-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .grocery-category {
+            background: linear-gradient(135deg, #a8e6cf, #81c784);
+            border-radius: 10px;
+            padding: 20px;
+            color: #2e7d32;
+        }
+
+        .grocery-category h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+        }
+
+        .grocery-category ul {
+            list-style: none;
+        }
+
+        .grocery-category li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .grocery-category li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #1b5e20;
+            font-weight: bold;
+        }
+
+        .nutrition-tips {
+            background: linear-gradient(135deg, #ffd89b, #19547b);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .nutrition-tips h2 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .tip-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tip-item strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd89b;
+        }
+
+        /* Exercise Tab Styles */
+        .exercise-header {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .exercise-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .workout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .workout-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .workout-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .workout-header {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .workout-header h3 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .workout-details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #fd79a8;
+        }
+
+        .workout-details h4 {
+            color: #e84393;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .workout-details h4:before {
+            content: "🔥";
+            margin-right: 8px;
+        }
+
+        .exercise-tips {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .exercise-tips h2 {
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: center;
+            border-bottom: 3px solid #fd79a8;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .grid, .workout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .tab-btn {
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🌱 Complete 7-Day Wellness Guide</h1>
+        <p>Build Strength • Stay Healthy • Eat Deliciously • Glow Naturally</p>
+
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="showTab('nutrition')">🍽️ Nutrition</button>
+            <button class="tab-btn" onclick="showTab('exercise')">💪 Exercise</button>
+            <button class="tab-btn" onclick="showTab('skincare')">✨ Skincare & Haircare</button>
+        </div>
+
+        <div class="supplement-optimization">
+            <h2>💊 Smart Supplement Strategy - Save Money!</h2>
+
+            <div class="supplement-priority">
+                <div class="priority-card priority-1">
+                    <h3>🥇 Priority 1: ONE Comprehensive Vegan Multivitamin</h3>
+                    <p><strong>Covers 6 out of 8 of your needed nutrients!</strong></p>
+
+                    <div class="supplement-details">
+                        <h4>✅ What It Includes:</h4>
+                        <ul>
+                            <li>Vitamin B12 (high dose - 300mcg+)</li>
+                            <li>Vegan Vitamin D3 (from lichen)</li>
+                            <li>Iron (chelated form for better absorption)</li>
+                            <li>Vitamin E (natural form)</li>
+                            <li>Biotin (for hair/nails)</li>
+                            <li>Zinc (for skin repair)</li>
+                        </ul>
+
+                        <h4>🛒 Recommended Brands (Available in South Africa):</h4>
+                        <div class="brand-options">
+                            <div class="brand featured">
+                                <strong>⭐ New Leaf Multivitamin Plus Iron (TOP PICK)</strong>
+                                <p>26 essential vitamins & minerals, vegan, UK-made<br>
+                                    90 tablets = 3 months supply<br>
+                                    <em>~R350/3 months = R117/month! 🎉</em><br>
+                                    <strong>Available:</strong> Faithful to Nature, Vita Wellness, Dis-Chem</p>
+                            </div>
+                            <div class="brand">
+                                <strong>Future Kind Complete Multi</strong>
+                                <p>42 ingredients, designed specifically for vegans<br>
+                                    <em>~R650/month, contains everything except omega-3 and collagen</em></p>
+                            </div>
+                            <div class="brand">
+                                <strong>DEVA Vegan Multivitamin</strong>
+                                <p>Budget-friendly option with all essentials<br>
+                                    <em>~R350/month, tiny tablets, easy to swallow</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="priority-card priority-2">
+                    <h3>🥈 Priority 2: Separate Algae Omega-3</h3>
+                    <p><strong>Not found in multivitamins - needs separate purchase</strong></p>
+
+                    <div class="supplement-details">
+                        <h4>Why Separate?</h4>
+                        <p>Omega-3 oils require special storage and are too bulky for pills. No quality multivitamin includes adequate amounts.</p>
+
+                        <h4>🛒 Recommended Options:</h4>
+                        <div class="brand-options">
+                            <div class="brand">
+                                <strong>Testa Omega-3</strong>
+                                <p>Pure algae DHA + EPA, available at Dis-Chem<br>
+                                    <em>~R400/month</em></p>
+                            </div>
+                            <div class="brand">
+                                <strong>Nordic Naturals Algae Omega</strong>
+                                <p>High quality, available online in SA<br>
+                                    <em>~R600/month</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="priority-card priority-3">
+                    <h3>🥉 Priority 3: Plant-Based Collagen Booster (Optional)</h3>
+                    <p><strong>Not actually "collagen" - supports your body's collagen production</strong></p>
+
+                    <div class="supplement-details">
+                        <h4>What It Really Is:</h4>
+                        <p>Plant extracts, vitamin C, amino acids (glycine, lysine, proline) that help your body make its own collagen. True vegan collagen doesn't exist - these are "collagen boosters" that provide nutrients needed for collagen synthesis.</p>
+
+                        <h4>💰 Cost-Saving Alternative:</h4>
+                        <p><strong>Get it from food instead!</strong> Foods rich in vitamin C include citrus fruits, berries, garlic, kale, bell peppers, papaya, tomatoes, broccoli, Brussels sprouts, and strawberries. Your meal plan already includes many of these!</p>
+
+                        <h4>If You Want a Supplement:</h4>
+                        <div class="brand">
+                            <strong>Garden of Life Plant Collagen Builder</strong>
+                            <p>Biotin + Silica from bamboo + organic fruits<br>
+                                <em>~R450/month</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cost-breakdown">
+                <h3>💰 Total Monthly Cost Breakdown</h3>
+                <div class="cost-options">
+                    <div class="cost-option budget">
+                        <h4>💚 Super Budget Option (~R517/month)</h4>
+                        <p>• <strong>New Leaf Multivitamin:</strong> ~R117/month<br>
+                            • <strong>Algae Omega-3:</strong> ~R400/month<br>
+                            • Skip collagen booster (get from food)<br>
+                            <strong>AMAZING VALUE! ⭐</strong></p>
+                    </div>
+                    <div class="cost-option premium">
+                        <h4>⭐ Premium Option (~R1200/month)</h4>
+                        <p>• Future Kind Complete Multi: ~R650<br>
+                            • Nordic Naturals Omega-3: ~R600<br>
+                            • Skip collagen booster (already excellent nutrition)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="supplement-tips">
+                <h3>🎯 Smart Shopping Tips</h3>
+                <div class="tips-grid-supplement">
+                    <div class="tip-supplement">
+                        <h4>🛍️ Where to Buy in South Africa</h4>
+                        <p>• <strong>New Leaf:</strong> Faithful to Nature, Vita Wellness, Dis-Chem<br>
+                            • <strong>Omega-3:</strong> Dis-Chem, Clicks, iHerb<br>
+                            • <strong>International brands:</strong> iHerb (ships to SA)<br>
+                            • <strong>Local online:</strong> Faithful to Nature, Wellness Warehouse</p>
+                    </div>
+                    <div class="tip-supplement">
+                        <h4>💡 Money-Saving Hacks</h4>
+                        <p>• Buy 3-month supplies for bulk discounts<br>
+                            • Subscribe & save programs<br>
+                            • Compare price per serving, not per bottle<br>
+                            • Generic brands often work just as well</p>
+                    </div>
+                    <div class="tip-supplement">
+                        <h4>⏰ When to Take</h4>
+                        <p>• B12, Iron: Morning with breakfast<br>
+                            • Omega-3: With largest meal<br>
+                            • D3: Morning (can affect sleep)<br>
+                            • Space iron and zinc apart by 2+ hours</p>
+                    </div>
+                    <div class="tip-supplement">
+                        <h4>🩺 Blood Tests</h4>
+                        <p>Test after 3 months to confirm levels:<br>
+                            • B12, D3, Iron, Ferritin<br>
+                            • Adjust doses based on results<br>
+                            • May need higher doses initially</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nutrition" class="tab-content active">
+        <div class="breakfast-base">
+            <h2>Your Daily Breakfast Foundation</h2>
+            <p><strong>Protein-Packed Oats (Every Morning)</strong></p>
+            <p>• 1/2 cup rolled oats • 1 tbsp chia seeds • 1 tbsp hemp seeds • 1 cup soy milk</p>
+            <p><strong>Optional additions:</strong> 1 tbsp ground flaxseed, maple syrup, cinnamon, berries</p>
+            <p><em>Nutrition: ~400 calories, 15g protein, omega-3s, fiber</em></p>
+        </div>
+
+        <div class="grid">
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>Day 1 - Monday</h3>
+                    <p>Upper Body Power Day</p>
+                </div>
+                <div class="meals-section">
+                    <div class="meal-item">
+                        <strong>🍽️ Lunch</strong>
+                        Quinoa power bowl with chickpeas, roasted vegetables, tahini dressing, pumpkin seeds
+                    </div>
+                    <div class="meal-item">
+                        <strong>🍽️ Dinner</strong>
+                        Mushroom pasta with kale and cashew nut sauce
+                    </div>
+                    <div class="meal-item">
+                        <strong>🥜 Snacks</strong>
+                        Apple with almond butter, handful of nuts
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>Day 2 - Tuesday</h3>
+                    <p>Lower Body Foundation</p>
+                </div>
+                <div class="meals-section">
+                    <div class="meal-item">
+                        <strong>🍽️ Lunch</strong>
+                        Chickpea salad sandwich with avocado on whole grain bread
+                    </div>
+                    <div class="meal-item">
+                        <strong>🍽️ Dinner</strong>
+                        Samp and beans with vegetables
+                    </div>
+                    <div class="meal-item">
+                        <strong>🥜 Snacks</strong>
+                        Hummus with carrots and cucumber
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>Day 3 - Wednesday</h3>
+                    <p>Cardio & Core Blast</p>
+                </div>
+                <div class="meals-section">
+                    <div class="meal-item">
+                        <strong>🍽️ Lunch</strong>
+                        Two minute noodles with tofu skin and wood ear mushroom.
+                    </div>
+                    <div class="meal-item">
+                        <strong>🍽️ Dinner</strong>
+                        Focaccia with roasted vegetables
+                    </div>
+                    <div class="meal-item">
+                        <strong>🥜 Snacks</strong>
+                        Smoothie with spinach, banana, protein powder, berries
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>Day 4 - Thursday</h3>
+                    <p>Full Body Circuit</p>
+                </div>
+                <div class="meals-section">
+                    <div class="meal-item">
+                        <strong>🍽️ Lunch</strong>
+                        Dhal and rice with green beans
+                    </div>
+                    <div class="meal-item">
+                        <strong>🍽️ Dinner</strong>
+                        Zucchini and butter beans
+                    </div>
+                    <div class="meal-item">
+                        <strong>🥜 Snacks</strong>
+                        Rice cakes with peanut butter, mixed nuts
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>Day 5 - Friday</h3>
+                    <p>Upper Body Progress</p>
+                </div>
+                <div class="meals-section">
+                    <div class="meal-item">
+                        <strong>🍽️ Lunch</strong>
+                        Sweet potato salad with lettuce, avocado, cucumber, and cannellini bean sauce
+                    </div>
+                    <div class="meal-item">
+                        <strong>🍽️ Dinner</strong>
+                        Tofu noodles with edamame and peanut sauce
+                    </div>
+                    <div class="meal-item">
+                        <strong>🥜 Snacks</strong>
+                        Popcorn and fruit
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="prep-section">
+            <h2>🍳 Meal Prep Guide</h2>
+
+            <div class="prep-day">
+                <h3>Sunday Prep Session (2-3 hours)</h3>
+
+                <div class="recipe">
+                    <h4>🥣 Overnight Oats (7 servings)</h4>
+                    <p><strong>Mix in large bowl:</strong> 3.5 cups rolled oats, 7 tbsp chia seeds, 7 tbsp hemp seeds</p>
+                    <p><strong>Divide into 7 containers, add to each:</strong> 1 cup soy milk, sweetener if desired</p>
+                    <p><strong>Storage:</strong> Refrigerate, ready each morning</p>
+                </div>
+
+                <div class="recipe">
+                    <h4>🍚 Grain Base Prep</h4>
+                    <p><strong>Cook large batches:</strong></p>
+                    <p>• 3 cups quinoa (makes ~9 cups cooked)</p>
+                    <p>• 2 cups brown rice (makes ~6 cups cooked)</p>
+                    <p>• 1 cup red lentils (makes ~2.5 cups cooked)</p>
+                    <p>• 1 cup samp (makes ~3 cups cooked)</p>
+                    <p><strong>Storage:</strong> Refrigerate in portioned containers, freeze half for later</p>
+                </div>
+
+                <div class="recipe">
+                    <h4>🥕 Vegetable Prep</h4>
+                    <p><strong>Wash and chop:</strong> Bell peppers, carrots, cucumber, broccoli, cauliflower</p>
+                    <p><strong>Roast (400°F, 25-30 min):</strong> Sweet potatoes, bell peppers, zucchini, mushrooms</p>
+                    <p><strong>Storage:</strong> Raw veggies in airtight containers, roasted in meal-sized portions</p>
+                </div>
+
+                <div class="recipe">
+                    <h4>🥜 Snack Prep</h4>
+                    <p><strong>Energy Balls:</strong> Blend 1 cup dates, 1/2 cup nuts, 2 tbsp cocoa powder, roll into balls</p>
+                    <p><strong>Roasted Chickpeas:</strong> Toss drained chickpeas with olive oil, spices, roast 400°F for 30 min</p>
+                    <p><strong>Hummus:</strong> Blend chickpeas, tahini, lemon, garlic, water</p>
+                </div>
+            </div>
+
+            <div class="prep-day">
+                <h3>Mid-Week Refresh (Wednesday)</h3>
+                <p>• Prepare fresh salads and smoothie ingredients</p>
+                <p>• Cook any grains running low</p>
+                <p>• Prep Thursday-Sunday vegetables</p>
+                <p>• Make tahini dressing and peanut sauce</p>
+            </div>
+
+            <div class="prep-day">
+                <h3>Daily Quick Tasks (10-15 minutes)</h3>
+                <p>• Assemble lunch bowls using prepped ingredients</p>
+                <p>• Start slow cooker meals in morning</p>
+                <p>• Blend smoothies and smoothie bowls</p>
+                <p>• Heat and season pre-cooked grains</p>
+            </div>
+        </div>
+
+        <div class="grocery-section">
+            <h2>🛒 Updated Grocery List</h2>
+
+            <div class="grocery-categories">
+                <div class="grocery-category">
+                    <h3>🌾 Grains & Starches</h3>
+                    <ul>
+                        <li>Rolled oats (large container)</li>
+                        <li>Quinoa (2 lbs)</li>
+                        <li>Brown rice (2 lbs)</li>
+                        <li>Samp (traditional white corn)</li>
+                        <li>Whole grain bread</li>
+                        <li>Focaccia bread</li>
+                        <li>Whole grain pasta</li>
+                        <li>Rice cakes</li>
+                        <li>Granola (for smoothie bowls)</li>
+                    </ul>
+                </div>
+
+                <div class="grocery-category">
+                    <h3>🫘 Proteins & Legumes</h3>
+                    <ul>
+                        <li>Red lentils (for dhal)</li>
+                        <li>Black beans (2 cans)</li>
+                        <li>Chickpeas (4 cans)</li>
+                        <li>Cannellini beans (2 cans)</li>
+                        <li>Butter beans (2 cans)</li>
+                        <li>Firm tofu (2 blocks)</li>
+                        <li>Plant protein powder</li>
+                        <li>Edamame (frozen)</li>
+                    </ul>
+                </div>
+
+                <div class="grocery-category">
+                    <h3>🥜 Nuts, Seeds & Oils</h3>
+                    <ul>
+                        <li>Chia seeds</li>
+                        <li>Hemp seeds</li>
+                        <li>Ground flaxseed</li>
+                        <li>Pumpkin seeds</li>
+                        <li>Mixed nuts</li>
+                        <li>Cashews (for sauces)</li>
+                        <li>Almond butter</li>
+                        <li>Peanut butter</li>
+                        <li>Tahini</li>
+                        <li>Olive oil</li>
+                        <li>Coconut oil</li>
+                    </ul>
+                </div>
+
+                <div class="grocery-category">
+                    <h3>🥬 Fresh Vegetables</h3>
+                    <ul>
+                        <li>Spinach (large bag)</li>
+                        <li>Kale</li>
+                        <li>Mixed lettuce</li>
+                        <li>Bell peppers (variety)</li>
+                        <li>Carrots</li>
+                        <li>Green beans</li>
+                        <li>Broccoli</li>
+                        <li>Sweet potatoes</li>
+                        <li>Mushrooms (variety)</li>
+                        <li>Zucchini</li>
+                        <li>Cucumber</li>
+                        <li>Tomatoes</li>
+                        <li>Onions</li>
+                        <li>Garlic</li>
+                        <li>Fresh ginger</li>
+                        <li>Avocados (4-5)</li>
+                    </ul>
+                </div>
+
+                <div class="grocery-category">
+                    <h3>🍓 Fruits</h3>
+                    <ul>
+                        <li>Bananas (1 bunch)</li>
+                        <li>Apples (6-8)</li>
+                        <li>Mixed berries (fresh/frozen)</li>
+                        <li>Lemons (3-4)</li>
+                        <li>Dates (Medjool)</li>
+                        <li>Fresh fruit variety for bowls</li>
+                    </ul>
+                </div>
+
+                <div class="grocery-category">
+                    <h3>🥛 Plant Milks & Alternatives</h3>
+                    <ul>
+                        <li>Soy milk (unsweetened, 2 cartons)</li>
+                        <li>Coconut milk (canned for curry)</li>
+                        <li>Nutritional yeast</li>
+                        <li>Plant milk for smoothies</li>
+                    </ul>
+                </div>
+
+                <div class="grocery-category">
+                    <h3>🧂 Pantry Essentials</h3>
+                    <ul>
+                        <li>Canned diced tomatoes</li>
+                        <li>Vegetable broth</li>
+                        <li>Curry powder/paste</li>
+                        <li>Cumin, turmeric, paprika</li>
+                        <li>Cinnamon</li>
+                        <li>Sea salt, black pepper</li>
+                        <li>Maple syrup</li>
+                        <li>Apple cider vinegar</li>
+                        <li>Soy sauce/tamari</li>
+                        <li>Vanilla extract</li>
+                        <li>Popcorn kernels</li>
+                        <li>Cocoa powder</li>
+                    </ul>
+                </div>
+
+                <div class="grocery-category">
+                    <h3>🍜 Specialty Items</h3>
+                    <ul>
+                        <li>Asian noodles (for tofu dish)</li>
+                        <li>Peanut sauce ingredients</li>
+                        <li>Risotto rice (Arborio)</li>
+                        <li>Soup base ingredients</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="nutrition-tips">
+            <h2>🌟 Success Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <strong>Hydration</strong>
+                    Aim for 8-10 glasses of water daily, more on exercise days
+                </div>
+                <div class="tip-item">
+                    <strong>Protein Target</strong>
+                    1.2-1.6g protein per kg body weight for strength building
+                </div>
+                <div class="tip-item">
+                    <strong>Iron Absorption</strong>
+                    Combine iron-rich foods with vitamin C sources
+                </div>
+                <div class="tip-item">
+                    <strong>B12 Critical</strong>
+                    Take a B12 supplement daily - essential for vegans
+                </div>
+                <div class="tip-item">
+                    <strong>Meal Timing</strong>
+                    Eat within 2 hours post-workout for optimal recovery
+                </div>
+                <div class="tip-item">
+                    <strong>Listen to Your Body</strong>
+                    Adjust portions and intensity based on hunger and energy
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="exercise" class="tab-content">
+        <div class="exercise-header">
+            <h2>💪 7-Day Exercise Program</h2>
+            <p>Progressive strength building with bodyweight exercises</p>
+        </div>
+
+        <div class="workout-grid">
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h3>Day 1 - Monday</h3>
+                    <p>Upper Body Power</p>
+                </div>
+                <div class="workout-details">
+                    <h4>Upper Body Strength (60 min)</h4>
+                    <p><strong>Warm-up (10 min):</strong><br>
+                        • Arm circles (forward & backward)<br>
+                        • Shoulder rolls<br>
+                        • Light cardio (marching in place)</p>
+
+                    <p><strong>Main Workout (40 min):</strong><br>
+                        • Push-ups (3 sets x 8-12 reps)<br>
+                        • Pike push-ups (3 sets x 6-10 reps)<br>
+                        • Tricep dips (chair/couch) (3 sets x 8-12 reps)<br>
+                        • Plank variations (3 sets x 30-60 sec)<br>
+                        • Pull-ups/resistance band rows (3 sets x 5-10 reps)<br>
+                        • Rest 60-90 seconds between sets</p>
+
+                    <p><strong>Cool-down (10 min):</strong><br>
+                        • Upper body stretches<br>
+                        • Deep breathing</p>
+                </div>
+            </div>
+
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h3>Day 2 - Tuesday</h3>
+                    <p>Lower Body Foundation</p>
+                </div>
+                <div class="workout-details">
+                    <h4>Lower Body Strength (60 min)</h4>
+                    <p><strong>Warm-up (10 min):</strong><br>
+                        • Leg swings (front to back, side to side)<br>
+                        • Hip circles<br>
+                        • Light squats</p>
+
+                    <p><strong>Main Workout (40 min):</strong><br>
+                        • Bodyweight squats (3 sets x 12-15 reps)<br>
+                        • Lunges (3 sets x 10 each leg)<br>
+                        • Single-leg glute bridges (3 sets x 10 each)<br>
+                        • Calf raises (3 sets x 15 reps)<br>
+                        • Wall sit (3 sets x 30-60 sec)<br>
+                        • Step-ups (using chair/step) (3 sets x 10 each leg)</p>
+
+                    <p><strong>Cool-down (10 min):</strong><br>
+                        • Lower body stretches<br>
+                        • Hamstring and quad stretches</p>
+                </div>
+            </div>
+
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h3>Day 3 - Wednesday</h3>
+                    <p>Cardio & Core Blast</p>
+                </div>
+                <div class="workout-details">
+                    <h4>Cardio & Core (60 min)</h4>
+                    <p><strong>Cardio (30 min):</strong><br>
+                        • Moderate intensity<br>
+                        • Options: jogging, cycling, dancing, YouTube workout videos<br>
+                        • Target: can hold conversation but slightly breathless</p>
+
+                    <p><strong>Core Circuit (20 min):</strong><br>
+                        • Bicycle crunches (3 sets x 20 reps)<br>
+                        • Russian twists (3 sets x 20 reps)<br>
+                        • Dead bugs (3 sets x 10 each side)<br>
+                        • Mountain climbers (3 sets x 30 sec)<br>
+                        • Side planks (3 sets x 20-30 sec each side)</p>
+
+                    <p><strong>Cool-down (10 min):</strong><br>
+                        • Yoga flow<br>
+                        • Cat-cow stretches<br>
+                        • Child's pose</p>
+                </div>
+            </div>
+
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h3>Day 4 - Thursday</h3>
+                    <p>Full Body Circuit</p>
+                </div>
+                <div class="workout-details">
+                    <h4>Full Body Circuit (60 min)</h4>
+                    <p><strong>Warm-up (10 min):</strong><br>
+                        • Dynamic stretching<br>
+                        • Light movement</p>
+
+                    <p><strong>Circuit Training (40 min):</strong><br>
+                        <strong>Repeat 3-4 rounds:</strong><br>
+                        • Burpees (30 sec)<br>
+                        • Squats (30 sec)<br>
+                        • Push-ups (30 sec)<br>
+                        • High knees (30 sec)<br>
+                        • Plank (30 sec)<br>
+                        • Jumping jacks (30 sec)<br>
+                        • Rest 60 sec between exercises<br>
+                        • Rest 2 min between rounds</p>
+
+                    <p><strong>Cool-down (10 min):</strong><br>
+                        • Full body stretching<br>
+                        • Focus on areas that feel tight</p>
+                </div>
+            </div>
+
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h3>Day 5 - Friday</h3>
+                    <p>Upper Body Progress</p>
+                </div>
+                <div class="workout-details">
+                    <h4>Upper Body Strength (60 min)</h4>
+                    <p><strong>Warm-up (10 min):</strong><br>
+                        • Arm circles and shoulder mobility<br>
+                        • Light cardio</p>
+
+                    <p><strong>Main Workout (40 min):</strong><br>
+                        • Repeat Monday's routine with progression:<br>
+                        • Add 2-3 more reps if possible<br>
+                        • Hold planks 10 seconds longer<br>
+                        • Add resistance band exercises if available<br>
+                        • Incline push-ups (feet elevated)<br>
+                        • Diamond push-ups (tricep focus)</p>
+
+                    <p><strong>Cool-down (10 min):</strong><br>
+                        • Upper body stretches<br>
+                        • Chest opener stretches</p>
+                </div>
+            </div>
+
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h3>Day 6 - Saturday</h3>
+                    <p>Active Recovery</p>
+                </div>
+                <div class="workout-details">
+                    <h4>Active Recovery (30-45 min)</h4>
+                    <p><strong>Choose one or combine:</strong><br>
+                        • Gentle yoga or stretching session<br>
+                        • Light walk outdoors<br>
+                        • Swimming (if available)<br>
+                        • Mobility work<br>
+                        • Foam rolling or self-massage</p>
+
+                    <p><strong>Focus on:</strong><br>
+                        • Improving flexibility<br>
+                        • Releasing muscle tension<br>
+                        • Mental relaxation<br>
+                        • Low intensity movement</p>
+                </div>
+            </div>
+
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h3>Day 7 - Sunday</h3>
+                    <p>Rest & Prep</p>
+                </div>
+                <div class="workout-details">
+                    <h4>Complete Rest (Optional light activity)</h4>
+                    <p><strong>Rest Day Activities:</strong><br>
+                        • Complete rest (recommended)<br>
+                        • Light stretching (10-15 min)<br>
+                        • Meditation or breathing exercises<br>
+                        • Plan next week's workouts</p>
+
+                    <p><strong>Prep for Next Week:</strong><br>
+                        • Review workout progress<br>
+                        • Plan meal prep<br>
+                        • Set weekly fitness goals<br>
+                        • Prepare workout space/equipment</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="exercise-tips">
+            <h2>🏋️‍♀️ Exercise Success Tips</h2>
+
+            <div class="tips-grid-skincare">
+                <div class="tip-card">
+                    <h3>📈 Progressive Overload</h3>
+                    <p>• Week 1-2: Focus on form and consistency</p>
+                    <p>• Week 3-4: Add 2-3 more reps or hold exercises 10 seconds longer</p>
+                    <p>• Week 5+: Try harder variations or add resistance</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🎯 Proper Form</h3>
+                    <p>• Quality over quantity always</p>
+                    <p>• Use mirrors to check alignment</p>
+                    <p>• Start with easier variations</p>
+                    <p>• Watch YouTube tutorials for guidance</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🗓️ Consistency Tips</h3>
+                    <p>• Schedule workouts like appointments</p>
+                    <p>• Start with 3-4 days if 6 feels overwhelming</p>
+                    <p>• Have backup 20-min routines for busy days</p>
+                    <p>• Track progress in a journal or app</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🔧 Equipment Alternatives</h3>
+                    <p>• Use water bottles as weights</p>
+                    <p>• Backpack with books for added resistance</p>
+                    <p>• Towels for sliding exercises</p>
+                    <p>• Stairs for step-ups and cardio</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>💧 Recovery & Hydration</h3>
+                    <p>• Drink water before, during, and after workouts</p>
+                    <p>• Get 7-9 hours of sleep for muscle recovery</p>
+                    <p>• Listen to your body - rest if overly fatigued</p>
+                    <p>• Eat protein within 2 hours post-workout</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>📱 Helpful Resources</h3>
+                    <p>• YouTube channels: Fitness Blender, Yoga with Adriene</p>
+                    <p>• Apps: Nike Training Club, 7 Minute Workout</p>
+                    <p>• Timer apps for circuit training</p>
+                    <p>• Form check videos for each exercise</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🎵 Motivation Boosters</h3>
+                    <p>• Create energizing workout playlists</p>
+                    <p>• Find a workout buddy or online community</p>
+                    <p>• Set weekly mini-goals</p>
+                    <p>• Reward yourself for consistency (not food rewards)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="skincare" class="tab-content">
+        <div class="skincare-header">
+            <h2>🏜️ Johannesburg Dry Climate Skincare & Haircare</h2>
+            <p>Combat the dry highveld climate with these hydrating routines</p>
+        </div>
+
+        <div class="routine-grid">
+            <div class="routine-card morning">
+                <div class="routine-header">
+                    <h3>🌅 Morning Routine (10 minutes)</h3>
+                    <p>Hydrate & Protect</p>
+                </div>
+
+                <div class="skincare-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Gentle Cleanser</h4>
+                            <p>Use a cream-based or oil cleanser (never foaming for dry skin)</p>
+                            <p><em>Products: CeraVe Hydrating Cleanser, Neutrogena Ultra Gentle</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Hydrating Toner</h4>
+                            <p>Apply with hands, don't use cotton pads (wastes product)</p>
+                            <p><em>Products: Hada Labo Hyaluronic Lotion, The Ordinary Hyaluronic Acid</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Vitamin C Serum</h4>
+                            <p>Antioxidant protection (every other day to start)</p>
+                            <p><em>Products: The Ordinary Vitamin C 23%, Mad Hippie Vitamin C</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Rich Moisturizer</h4>
+                            <p>Look for ceramides, glycerin, and shea butter</p>
+                            <p><em>Products: CeraVe Daily Moisturizing Lotion, Eucerin Original</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>SPF 30+ Sunscreen</h4>
+                            <p>Essential at Joburg's high altitude (1,700m)</p>
+                            <p><em>Products: La Roche Posay Anthelios, EltaMD UV Clear</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Lip Balm with SPF</h4>
+                            <p>Reapply every 2 hours throughout the day</p>
+                            <p><em>Products: Blistex Five Star, Nivea Lip Care SPF 15</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="routine-card evening">
+                <div class="routine-header">
+                    <h3>🌙 Evening Routine (15 minutes)</h3>
+                    <p>Repair & Hydrate Deeply</p>
+                </div>
+
+                <div class="skincare-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Double Cleanse</h4>
+                            <p>Oil cleanser first, then gentle cream cleanser</p>
+                            <p><em>Products: DHC Deep Cleansing Oil + morning cleanser</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Hydrating Toner</h4>
+                            <p>Same as morning, can apply 2-3 layers</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Treatment (2-3x per week)</h4>
+                            <p>Gentle retinol or AHA for skin renewal</p>
+                            <p><em>Products: The Ordinary Retinol 0.25%, Paula's Choice 2% BHA</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Heavy Night Moisturizer</h4>
+                            <p>Thicker formula than morning, can use facial oil</p>
+                            <p><em>Products: CeraVe Moisturizing Cream, The Ordinary Squalane Oil</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Overnight Lip Treatment</h4>
+                            <p>Thick balm or petroleum jelly for deep repair</p>
+                            <p><em>Products: Aquaphor Lip Repair, Lanolips 101 Ointment</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hair-section">
+            <h2>💇‍♀️ Dry Hair Care for Johannesburg Climate</h2>
+
+            <div class="hair-grid">
+                <div class="hair-routine">
+                    <h3>🚿 Washing Routine (2-3x per week max)</h3>
+                    <div class="hair-steps">
+                        <div class="hair-step">
+                            <strong>Pre-wash Oil Treatment</strong>
+                            <p>Apply coconut, argan, or jojoba oil to dry hair 30 min before washing</p>
+                        </div>
+                        <div class="hair-step">
+                            <strong>Sulfate-Free Shampoo</strong>
+                            <p>Focus only on scalp, avoid lengths</p>
+                            <p><em>Products: SheaMoisture Coconut & Hibiscus, OGX Argan Oil</em></p>
+                        </div>
+                        <div class="hair-step">
+                            <strong>Deep Conditioning</strong>
+                            <p>Apply from mid-length to ends, leave 5-10 minutes</p>
+                            <p><em>Products: Shea Moisture Manuka Honey Mask, DIY: avocado + honey</em></p>
+                        </div>
+                        <div class="hair-step">
+                            <strong>Cool Rinse</strong>
+                            <p>Final rinse with cool water to seal hair cuticles</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hair-routine">
+                    <h3>📅 Weekly Treatments</h3>
+                    <div class="hair-steps">
+                        <div class="hair-step">
+                            <strong>Sunday: Deep Conditioning Mask</strong>
+                            <p>Leave-in treatment for 20-30 minutes</p>
+                        </div>
+                        <div class="hair-step">
+                            <strong>Wednesday: Scalp Massage</strong>
+                            <p>5 min massage with jojoba or coconut oil</p>
+                        </div>
+                        <div class="hair-step">
+                            <strong>Friday: Protein Treatment (monthly)</strong>
+                            <p>DIY: egg mask or store-bought protein treatment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hair-routine">
+                    <h3>🎯 Daily Protection</h3>
+                    <div class="hair-steps">
+                        <div class="hair-step">
+                            <strong>Leave-in Conditioner</strong>
+                            <p>Apply to damp hair, focusing on ends</p>
+                            <p><em>Products: It's a 10 Miracle Leave-in, Cantu Leave-in</em></p>
+                        </div>
+                        <div class="hair-step">
+                            <strong>Hair Oil (small amount)</strong>
+                            <p>Seal in moisture, avoid roots</p>
+                        </div>
+                        <div class="hair-step">
+                            <strong>Silk/Satin Pillowcase</strong>
+                            <p>Reduces friction and moisture loss while sleeping</p>
+                        </div>
+                        <div class="hair-step">
+                            <strong>UV Protection</strong>
+                            <p>Hat or UV-protectant spray when outdoors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="special-tips">
+            <h2>🏜️ Johannesburg-Specific Tips</h2>
+
+            <div class="tips-grid-skincare">
+                <div class="tip-card">
+                    <h3>🌡️ Combat Dry Air</h3>
+                    <p>• Use a humidifier in bedroom (45-50% humidity ideal)</p>
+                    <p>• Place bowls of water around living spaces</p>
+                    <p>• Drink extra water at altitude</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>☀️ High Altitude Sun</h3>
+                    <p>• UV is 25% stronger at Joburg's altitude</p>
+                    <p>• Reapply sunscreen every 2 hours</p>
+                    <p>• Wear sunglasses and wide-brimmed hats</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>💧 Extra Hydration</h3>
+                    <p>• Apply moisturizer to damp skin</p>
+                    <p>• Use facial mists throughout the day</p>
+                    <p>• Layer hydrating products (toner → serum → moisturizer)</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🏠 Indoor Climate</h3>
+                    <p>• Limit hot showers (lukewarm is better)</p>
+                    <p>• Use gentle, fragrance-free products</p>
+                    <p>• Consider an air purifier for dust</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-shopping">
+            <h2>🛒 Skincare & Haircare Shopping List</h2>
+
+            <div class="shopping-grid">
+                <div class="shopping-category">
+                    <h3>🧴 Essential Skincare</h3>
+                    <ul>
+                        <li>Gentle cream cleanser</li>
+                        <li>Hydrating toner/essence</li>
+                        <li>Vitamin C serum</li>
+                        <li>Rich daily moisturizer</li>
+                        <li>Heavy night cream</li>
+                        <li>SPF 30+ sunscreen</li>
+                        <li>Lip balm with SPF</li>
+                        <li>Overnight lip treatment</li>
+                        <li>Gentle retinol (start 1x/week)</li>
+                    </ul>
+                </div>
+
+                <div class="shopping-category">
+                    <h3>💇‍♀️ Hair Care Essentials</h3>
+                    <ul>
+                        <li>Sulfate-free shampoo</li>
+                        <li>Deep conditioning mask</li>
+                        <li>Leave-in conditioner</li>
+                        <li>Hair oil (argan, jojoba, or coconut)</li>
+                        <li>Silk or satin pillowcase</li>
+                        <li>Wide-tooth comb</li>
+                        <li>UV protection spray</li>
+                        <li>Protein treatment (monthly use)</li>
+                    </ul>
+                </div>
+
+                <div class="shopping-category">
+                    <h3>🏠 Environment Helpers</h3>
+                    <ul>
+                        <li>Humidifier for bedroom</li>
+                        <li>Facial mist spray</li>
+                        <li>Microfiber hair towel</li>
+                        <li>Wide-brimmed hat</li>
+                        <li>UV-blocking sunglasses</li>
+                        <li>Gentle laundry detergent</li>
+                    </ul>
+                </div>
+
+                <div class="shopping-category">
+                    <h3>💊 Cost-Effective Supplement Strategy</h3>
+                    <ul>
+                        <li><strong>Priority 1:</strong> Comprehensive Vegan Multivitamin</li>
+                        <li><strong>Priority 2:</strong> Separate Algae Omega-3</li>
+                        <li><strong>Priority 3:</strong> Plant-based Collagen Booster (optional)</li>
+                    </ul>
+                    <p style="font-size: 0.9em; margin-top: 10px; font-style: italic;">
+                        See supplement optimization guide in header section ↗️
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Remove active class from all buttons
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        tabButtons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Show selected tab and mark button as active
+        document.getElementById(tabName).classList.add('active');
+        event.target.classList.add('active');
+    }
+</script>
+</body>
+</html>
